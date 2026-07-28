@@ -59,8 +59,8 @@ export default function Policies() {
           italic="Policies"
           right={
             <p className="font-sora font-light text-black/70 text-[18px] leading-[1.55] max-w-[620px] text-right">
-              We're deeply passionate about keeping every promise, conveying our
-              commitment to quality in everything we deliver.
+              We&apos;re deeply passionate about keeping every promise,
+              conveying our commitment to quality in everything we deliver.
             </p>
           }
         />
