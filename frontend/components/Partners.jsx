@@ -1,0 +1,65 @@
+const Eyebrow = ({ children }) => (
+  <p
+    className="font-sora font-bold uppercase tracking-wide text-[18px] leading-[32px]"
+    style={{
+      backgroundImage: "linear-gradient(0deg,#8B68CE 15.91%,#9AD2ED 90.91%)",
+      WebkitBackgroundClip: "text",
+      WebkitTextFillColor: "transparent",
+      backgroundClip: "text",
+    }}
+  >
+    {children}
+  </p>
+);
+
+const SectionHeading = ({ eyebrow, line1, italic, line2, right, center }) => (
+  <div
+    className={`flex flex-col md:flex-row ${
+      center
+        ? "items-center text-center"
+        : "items-start md:items-end justify-between"
+    } gap-8`}
+  >
+    <div>
+      <Eyebrow>{eyebrow}</Eyebrow>
+      <h2 className="font-sora font-normal text-[36px] md:text-[50px] leading-[1.15] tracking-[-1.06px] text-black mt-2">
+        {line1} <span className="font-display italic">{italic}</span>
+        {line2 ? (
+          <>
+            <br />
+            {line2}
+          </>
+        ) : null}
+      </h2>
+    </div>
+    {right}
+  </div>
+);
+
+export default function Partners() {
+  return (
+    <>
+      <section className="max-w-[1276px] mx-auto px-6 py-28">
+        <SectionHeading
+          eyebrow="06 // Our Partners"
+          line1="Meet Our"
+          italic="Working"
+          line2="Partners"
+          center
+        />
+        <div className="flex flex-col md:flex-row gap-10 mt-16">
+          {["H&M", "PRIMARK", "M&S"].map((brand) => (
+            <div
+              key={brand}
+              className="flex-1 border border-black/30 h-[260px] flex items-center justify-center"
+            >
+              <span className="font-hero text-[42px] tracking-wide text-black/80">
+                {brand}
+              </span>
+            </div>
+          ))}
+        </div>
+      </section>
+    </>
+  );
+}

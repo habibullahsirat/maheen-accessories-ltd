@@ -1,3 +1,55 @@
+const Icon = ({ children, size = 20, className = "", strokeWidth = 1.8 }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={strokeWidth}
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+  >
+    {children}
+  </svg>
+);
+
+const ShieldCheck = (p) => (
+  <Icon {...p}>
+    <path d="M12 2 4 5v6c0 5 3.5 8.5 8 11 4.5-2.5 8-6 8-11V5Z" />
+    <path d="m9 12 2 2 4-4" />
+  </Icon>
+);
+const Leaf = (p) => (
+  <Icon {...p}>
+    <path d="M11 20A7 7 0 0 1 4 13c0-5 4-9 11-11 1 6-1 10-4 12" />
+    <path d="M6.53 15.47C9 13 12 12 16 10" />
+  </Icon>
+);
+const HeartHandshake = (p) => (
+  <Icon {...p}>
+    <path d="M12 6c-1.5-2-4-3-6-1.5C3.5 6 3 9 5 11l7 7 7-7c2-2 1.5-5-1-6.5C16 3 13.5 4 12 6Z" />
+  </Icon>
+);
+const FlaskConical = (p) => (
+  <Icon {...p}>
+    <path d="M9 2h6M10 2v6l-6 10a2 2 0 0 0 2 3h12a2 2 0 0 0 2-3l-6-10V2" />
+  </Icon>
+);
+const FileCheck2 = (p) => (
+  <Icon {...p}>
+    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z" />
+    <path d="M14 2v6h6M9 15l2 2 4-4" />
+  </Icon>
+);
+const Users2 = (p) => (
+  <Icon {...p}>
+    <circle cx="9" cy="7" r="4" />
+    <path d="M2 21v-2a4 4 0 0 1 4-4h6a4 4 0 0 1 4 4v2" />
+    <path d="M16 3.13a4 4 0 0 1 0 7.75M22 21v-2a4 4 0 0 0-3-3.87" />
+  </Icon>
+);
+
 const Eyebrow = ({ children }) => (
   <p
     className="font-sora font-bold uppercase tracking-wide text-[18px] leading-[32px]"

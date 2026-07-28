@@ -14,6 +14,25 @@ const Icon = ({ children, size = 20, className = "", strokeWidth = 1.8 }) => (
   </svg>
 );
 
+const Instagram = (p) => (
+  <Icon {...p}>
+    <rect x="2" y="2" width="20" height="20" rx="5" />
+    <circle cx="12" cy="12" r="4" />
+    <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+  </Icon>
+);
+const Facebook = (p) => (
+  <Icon {...p}>
+    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+  </Icon>
+);
+const Linkedin = (p) => (
+  <Icon {...p}>
+    <rect x="2" y="2" width="20" height="20" rx="2" />
+    <path d="M6 9v8M6 6v.01M10 17v-5a2 2 0 0 1 4 0v5M14 12v5" />
+  </Icon>
+);
+
 const Send = (p) => (
   <Icon {...p}>
     <path d="m22 2-7 20-4-9-9-4Z" />
