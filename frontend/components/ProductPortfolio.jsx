@@ -14,6 +14,12 @@ const Icon = ({ children, size = 20, className = "", strokeWidth = 1.8 }) => (
   </svg>
 );
 
+const ArrowUpRight = (p) => (
+  <Icon {...p}>
+    <path d="M7 17 17 7M7 7h10v10" />
+  </Icon>
+);
+
 const CornerBorderButton = ({ children, dark = false }) => (
   <button
     className={`relative font-sora text-[14px] tracking-[0.8px] capitalize px-8 py-4 flex items-center gap-3 ${
