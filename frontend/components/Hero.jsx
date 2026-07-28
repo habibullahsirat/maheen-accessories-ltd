@@ -1,3 +1,47 @@
+const Icon = ({ children, size = 20, className = "", strokeWidth = 1.8 }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={strokeWidth}
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+  >
+    {children}
+  </svg>
+);
+
+const ArrowUpRight = (p) => (
+  <Icon {...p}>
+    <path d="M7 17 17 7M7 7h10v10" />
+  </Icon>
+);
+
+const CornerBorderButton = ({ children, dark = false }) => (
+  <button
+    className={`relative font-sora text-[14px] tracking-[0.8px] capitalize px-8 py-4 flex items-center gap-3 ${
+      dark ? "text-white" : "text-black"
+    }`}
+    style={{ background: "rgba(0,0,0,0.08)" }}
+  >
+    <span
+      className={`absolute top-0 left-0 w-3 h-3 border-t border-l ${
+        dark ? "border-white" : "border-black"
+      }`}
+    />
+    <span
+      className={`absolute bottom-0 right-0 w-3 h-3 border-b border-r ${
+        dark ? "border-white" : "border-black"
+      }`}
+    />
+    {children}
+    <ArrowUpRight size={16} />
+  </button>
+);
+
 export default function Hero() {
   return (
     <section
