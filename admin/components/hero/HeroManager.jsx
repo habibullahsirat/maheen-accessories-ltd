@@ -3,7 +3,7 @@ import { useState } from "react";
 import HeroList from "./HeroList";
 import { useHeroData } from "@/lib/DataFetch/SWRDataFetch";
 import HeroForm from "./HeroForm";
-import Modal from "../../ui/Modal";
+import Modal from "@/components/ui/Modal";
 import { toast } from "sonner";
 
 export default function HeroManager() {
