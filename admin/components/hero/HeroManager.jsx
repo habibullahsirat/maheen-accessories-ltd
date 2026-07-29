@@ -7,7 +7,7 @@ import Modal from "../../ui/Modal";
 import { toast } from "sonner";
 
 export default function HeroManager() {
-  const { data: heros, mutate, isLoading } = useHeroData();
+  const { data: hero, mutate, isLoading } = useHeroData();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingHero, setEditingHero] = useState(null);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -29,7 +29,7 @@ export default function HeroManager() {
     setIsDeleting(true);
     try {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/heros/${id}`,
+        `${process.env.NEXT_PUBLIC_API_URL}/api/hero/${id}`,
         {
           method: "DELETE",
         },
@@ -51,8 +51,8 @@ export default function HeroManager() {
     setIsSubmitting(true);
     try {
       const url = editingHero
-        ? `${process.env.NEXT_PUBLIC_API_URL}/api/heros/${editingHero._id}`
-        : `${process.env.NEXT_PUBLIC_API_URL}/api/heros`;
+        ? `${process.env.NEXT_PUBLIC_API_URL}/api/hero/${editingHero._id}`
+        : `${process.env.NEXT_PUBLIC_API_URL}/api/hero`;
 
       const method = editingHero ? "PATCH" : "POST";
 
@@ -101,7 +101,7 @@ export default function HeroManager() {
           <h1 className="text-3xl font-bold text-gray-900">Hero Management</h1>
           <p className="text-gray-600 mt-1">
             Total Heroes:{" "}
-            <span className="font-semibold">{heros?.length || 0}</span>
+            <span className="font-semibold">{hero?.length || 0}</span>
           </p>
         </div>
 
@@ -128,7 +128,7 @@ export default function HeroManager() {
 
       {/* Hero List */}
       <HeroList
-        heros={heros}
+        hero={hero}
         onEdit={handleEdit}
         onDelete={handleDelete}
         isDeleting={isDeleting}
