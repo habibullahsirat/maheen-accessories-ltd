@@ -5,6 +5,7 @@ import PhotoUpload from "@/components/ui/PhotoUpload";
 export default function HeroForm({ initialData, onSubmit, onCancel }) {
   const [formData, setFormData] = useState({
     title: initialData?.title || "",
+    subtitle: initialData?.subtitle || "",
     description: initialData?.description || "",
     image: initialData?.image || "",
     cta: {
@@ -90,6 +91,30 @@ export default function HeroForm({ initialData, onSubmit, onCancel }) {
         />
         {errors.title && (
           <p className="mt-1 text-sm text-red-600">{errors.title}</p>
+        )}
+      </div>
+
+      {/* Subtitle field */}
+      <div>
+        <label
+          htmlFor="Subtitle"
+          className="block text-sm font-medium text-gray-700 mb-1"
+        >
+          Sub Title <span className="text-red-600">*</span>
+        </label>
+        <input
+          type="text"
+          id="subtitle"
+          name="subtitle"
+          value={formData.subtitle}
+          onChange={handleChange}
+          className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+            errors.subtitle ? "border-red-500" : "border-gray-300"
+          }`}
+          placeholder="Enter hero subtitle"
+        />
+        {errors.subtitle && (
+          <p className="mt-1 text-sm text-red-600">{errors.subtitle}</p>
         )}
       </div>
 
