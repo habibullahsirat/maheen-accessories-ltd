@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import PhotoUpload from "../../ui/PhotoUpload";
+import PhotoUpload from "@/components/ui/PhotoUpload";
 
 export default function HeroForm({ initialData, onSubmit, onCancel }) {
   const [formData, setFormData] = useState({
