@@ -24,6 +24,12 @@ const heroSectionSchema = new Schema(
       trim: true,
     },
 
+    subtitle: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+
     description: {
       type: String,
       required: true,
