@@ -45,10 +45,10 @@ export default function PhotoUpload({
       try {
         const formData = new FormData();
         formData.append("file", file);
-        formData.append("upload_preset", "habson");
+        formData.append("upload_preset", "maheen-accessories");
 
         const response = await fetch(
-          "https://api.cloudinary.com/v1_1/dov6k7xdk/image/upload",
+          "https://api.cloudinary.com/v1_1/t5etxjrg/image/upload",
           { method: "POST", body: formData },
         );
 

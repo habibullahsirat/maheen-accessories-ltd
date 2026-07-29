@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import HeroList from "./HeroList";
-import { useHeroData } from "../../../lib/DataFetch/SWRDataFetch";
+import { useHeroData } from "@/lib/DataFetch/SWRDataFetch";
 import HeroForm from "./HeroForm";
 import Modal from "../../ui/Modal";
 import { toast } from "sonner";
