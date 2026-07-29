@@ -1,5 +1,5 @@
 import { connectToDB } from "@/lib/connectToDB";
-import { HeroSection } from "@/lib/models/Hero";
+import { ServiceSection } from "@/lib/models/Service";
 import { NextResponse } from "next/server";
 
 export async function PATCH(
@@ -12,7 +12,7 @@ export async function PATCH(
   await connectToDB();
 
   try {
-    const updated = await HeroSection.findByIdAndUpdate(id, data, {
+    const updated = await ServiceSection.findByIdAndUpdate(id, data, {
       new: true, // Returns the updated document
       runValidators: true, // Ensures model validation
     });
@@ -45,7 +45,7 @@ export async function DELETE(
 
   try {
     await connectToDB();
-    const deleted = await HeroSection.findByIdAndDelete(id);
+    const deleted = await ServiceSection.findByIdAndDelete(id);
     if (!deleted) {
       return NextResponse.json({ message: " data not found" }, { status: 404 });
     }
