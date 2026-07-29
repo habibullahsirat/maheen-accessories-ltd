@@ -2,14 +2,14 @@
 import Image from "next/image";
 import { useState } from "react";
 
-export default function HeroList({ heros, onEdit, onDelete, isDeleting }) {
+export default function HeroList({ hero, onEdit, onDelete, isDeleting }) {
   const [imageErrors, setImageErrors] = useState({});
 
   const handleImageError = (heroId) => {
     setImageErrors((prev) => ({ ...prev, [heroId]: true }));
   };
 
-  if (!heros) {
+  if (!hero) {
     return (
       <div className="flex justify-center items-center h-64">
         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
@@ -17,7 +17,7 @@ export default function HeroList({ heros, onEdit, onDelete, isDeleting }) {
     );
   }
 
-  if (heros.length === 0) {
+  if (hero.length === 0) {
     return (
       <div className="text-center py-12 bg-gray-50 rounded-lg">
         <p className="text-gray-500 text-lg">
@@ -29,7 +29,7 @@ export default function HeroList({ heros, onEdit, onDelete, isDeleting }) {
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {heros.map((hero) => (
+      {hero.map((hero) => (
         <div
           key={hero._id}
           className="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 hover:shadow-lg transition-shadow"
