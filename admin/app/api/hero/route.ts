@@ -1,5 +1,5 @@
 import { connectToDB } from "@/lib/connectToDB";
-import { HeroSection } from "@/lib/models/home-model";
+import { HeroSection } from "@/lib/models/Hero";
 import { NextResponse } from "next/server";
 
 export async function GET() {
