@@ -13,3 +13,8 @@ export const useServiceData = () => {
   const { data, error, mutate } = useSWR(`${API_URL}/api/service`, fetcher);
   return { data, error, isLoading: !data && !error, mutate };
 };
+
+export const useAlbumData = () => {
+  const { data, error, mutate } = useSWR(`${API_URL}/api/album`, fetcher);
+  return { data, error, isLoading: !data && !error, mutate };
+};
