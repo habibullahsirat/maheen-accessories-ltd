@@ -77,7 +77,7 @@ export default function AboutManager() {
       mutate(); // Refresh the data
       setIsModalOpen(false);
     } catch (error) {
-      toast.error(error.message || "Failed to save hero");
+      toast.error(error.message || "Failed to save about");
       console.error("Save error:", error);
     } finally {
       setIsSubmitting(false);
@@ -130,7 +130,7 @@ export default function AboutManager() {
         </button>
       </div>
 
-      {/* Hero List */}
+      {/* About List */}
       <AboutList
         about={about}
         onEdit={handleEdit}
@@ -142,10 +142,10 @@ export default function AboutManager() {
       <Modal
         isOpen={isModalOpen}
         onClose={() => !isSubmitting && setIsModalOpen(false)}
-        title={editingHero ? "Edit Hero" : "Add New Hero"}
+        title={editingAbout ? "Edit About" : "Add New About"}
       >
-        <HeroForm
-          initialData={editingHero}
+        <AboutForm
+          initialData={editingAbout}
           onSubmit={handleSubmit}
           onCancel={() => !isSubmitting && setIsModalOpen(false)}
         />
