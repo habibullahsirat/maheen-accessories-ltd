@@ -360,9 +360,9 @@ export default function About() {
   useEffect(() => {
     const fetchAbout = async () => {
       try {
-        const res = await fetch("http://localhost:3000/api/about", {
-          cache: "no-store",
-        });
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_ADMIN_API}/api/about`,
+        );
 
         const data = await res.json();
 
