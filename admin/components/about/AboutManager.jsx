@@ -29,7 +29,7 @@ export default function AboutManager() {
     setIsDeleting(true);
     try {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/hero/${id}`,
+        `${process.env.NEXT_PUBLIC_API_URL}/api/about/${id}`,
         {
           method: "DELETE",
         },
@@ -37,10 +37,10 @@ export default function AboutManager() {
 
       if (!response.ok) throw new Error("Failed to delete");
 
-      toast.success("Hero deleted successfully!");
+      toast.success("About section deleted successfully!");
       mutate(); // Refresh the data
     } catch (error) {
-      toast.error("Failed to delete hero");
+      toast.error("Failed to delete about section");
       console.error("Delete error:", error);
     } finally {
       setIsDeleting(false);
@@ -50,11 +50,11 @@ export default function AboutManager() {
   const handleSubmit = async (formData) => {
     setIsSubmitting(true);
     try {
-      const url = editingHero
-        ? `${process.env.NEXT_PUBLIC_API_URL}/api/hero/${editingHero._id}`
-        : `${process.env.NEXT_PUBLIC_API_URL}/api/hero`;
+      const url = editingAbout
+        ? `${process.env.NEXT_PUBLIC_API_URL}/api/about/${editingAbout._id}`
+        : `${process.env.NEXT_PUBLIC_API_URL}/api/about`;
 
-      const method = editingHero ? "PATCH" : "POST";
+      const method = editingAbout ? "PATCH" : "POST";
 
       const response = await fetch(url, {
         method,
@@ -70,7 +70,9 @@ export default function AboutManager() {
       }
 
       toast.success(
-        editingHero ? "Hero updated successfully!" : "Hero added successfully!",
+        editingAbout
+          ? "About section updated successfully!"
+          : "About section added successfully!",
       );
       mutate(); // Refresh the data
       setIsModalOpen(false);
@@ -87,7 +89,7 @@ export default function AboutManager() {
       <div className="flex justify-center items-center min-h-screen">
         <div className="text-center">
           <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading heroes...</p>
+          <p className="text-gray-600">Loading about...</p>
         </div>
       </div>
     );
@@ -98,10 +100,12 @@ export default function AboutManager() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Hero Management</h1>
+          <h1 className="text-3xl font-bold text-gray-900">
+            About Section Management
+          </h1>
           <p className="text-gray-600 mt-1">
-            Total Heroes:{" "}
-            <span className="font-semibold">{hero?.length || 0}</span>
+            Total About:{" "}
+            <span className="font-semibold">{about?.length || 0}</span>
           </p>
         </div>
 
@@ -122,13 +126,13 @@ export default function AboutManager() {
               d="M12 4v16m8-8H4"
             />
           </svg>
-          Add New Hero
+          Add New About
         </button>
       </div>
 
       {/* Hero List */}
-      <HeroList
-        hero={hero}
+      <AboutList
+        about={about}
         onEdit={handleEdit}
         onDelete={handleDelete}
         isDeleting={isDeleting}
