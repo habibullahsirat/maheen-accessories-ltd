@@ -1,5 +1,5 @@
 import { connectToDB } from "@/lib/connectToDB";
-import { AlbumSection } from "@/lib/models/album";
+import { AlbumSection } from "@/lib/models/Album";
 import { NextResponse } from "next/server";
 
 export async function GET() {
