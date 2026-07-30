@@ -5,11 +5,11 @@ import { useState } from "react";
 export default function PhotoList({ photo, onEdit, onDelete, isDeleting }) {
   const [imageErrors, setImageErrors] = useState({});
 
-  const handleImageError = (heroId) => {
-    setImageErrors((prev) => ({ ...prev, [heroId]: true }));
+  const handleImageError = (photoId) => {
+    setImageErrors((prev) => ({ ...prev, [photoId]: true }));
   };
 
-  if (!hero) {
+  if (!photo) {
     return (
       <div className="flex justify-center items-center h-64">
         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
@@ -17,11 +17,11 @@ export default function PhotoList({ photo, onEdit, onDelete, isDeleting }) {
     );
   }
 
-  if (hero.length === 0) {
+  if (photo.length === 0) {
     return (
       <div className="text-center py-12 bg-gray-50 rounded-lg">
         <p className="text-gray-500 text-lg">
-          No heroes found. Add your first hero!
+          No photos found. Add your first photo!
         </p>
       </div>
     );
@@ -29,17 +29,17 @@ export default function PhotoList({ photo, onEdit, onDelete, isDeleting }) {
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {hero.map((hero) => (
+      {hero.map((photo) => (
         <div
-          key={hero._id}
+          key={photo._id}
           className="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 hover:shadow-lg transition-shadow"
         >
           {/* Image Section */}
           <div className="relative h-48 w-full bg-gray-100">
-            {!imageErrors[hero._id] ? (
+            {!imageErrors[photo._id] ? (
               <Image
-                src={hero.image}
-                alt={hero.title}
+                src={photo.image}
+                alt={photo.title}
                 fill
                 className="object-cover"
                 onError={() => handleImageError(hero._id)}

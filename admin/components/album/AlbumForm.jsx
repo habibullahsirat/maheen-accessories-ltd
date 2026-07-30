@@ -4,6 +4,7 @@ import PhotoUpload from "@/components/ui/PhotoUpload";
 
 export default function AlbumForm({ initialData, onSubmit, onCancel }) {
   const [formData, setFormData] = useState({
+    title: initialData?.title || "",
     image: initialData?.image || "",
   });
 
@@ -39,9 +40,9 @@ export default function AlbumForm({ initialData, onSubmit, onCancel }) {
   const validateForm = () => {
     const newErrors = {};
 
-    // if (!formData.title.trim()) {
-    //   newErrors.title = "Title is required";
-    // }
+    if (!formData.title.trim()) {
+      newErrors.title = "Title is required";
+    }
     // if (!formData.description.trim()) {
     //   newErrors.description = "Description is required";
     // }
@@ -64,7 +65,7 @@ export default function AlbumForm({ initialData, onSubmit, onCancel }) {
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       {/* Title Field */}
-      {/* <div>
+      <div>
         <label
           htmlFor="title"
           className="block text-sm font-medium text-gray-700 mb-1"
@@ -85,7 +86,7 @@ export default function AlbumForm({ initialData, onSubmit, onCancel }) {
         {errors.title && (
           <p className="mt-1 text-sm text-red-600">{errors.title}</p>
         )}
-      </div> */}
+      </div>
 
       {/* Subtitle field */}
       {/* <div>

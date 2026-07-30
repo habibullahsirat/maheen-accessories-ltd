@@ -2,6 +2,11 @@ import mongoose, { Schema } from "mongoose";
 
 const albumSectionSchema = new Schema(
   {
+    title: {
+      type: String,
+      required: true,
+      trim: true,
+    },
     image: {
       type: String,
       required: true,
