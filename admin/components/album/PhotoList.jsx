@@ -42,7 +42,7 @@ export default function PhotoList({ photo, onEdit, onDelete, isDeleting }) {
                 alt={photo.title}
                 fill
                 className="object-cover"
-                onError={() => handleImageError(hero._id)}
+                onError={() => handleImageError(photo._id)}
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               />
             ) : (
@@ -74,15 +74,15 @@ export default function PhotoList({ photo, onEdit, onDelete, isDeleting }) {
 
           {/* Content Section */}
           <div className="p-4">
-            <h3 className="text-xl font-semibold text-gray-900 mb-2 line-clamp-1">
-              {hero.title}
-            </h3>
-            <p className="text-gray-600 mb-4 line-clamp-2">
+            {/* <h3 className="text-xl font-semibold text-gray-900 mb-2 line-clamp-1"> */}
+            {/* {hero.title} */}
+            {/* </h3> */}
+            {/* <p className="text-gray-600 mb-4 line-clamp-2">
               {hero.description}
-            </p>
+            </p> */}
 
             {/* CTA Display */}
-            {hero.cta && (hero.cta.text || hero.cta.href) && (
+            {/* {hero.cta && (hero.cta.text || hero.cta.href) && (
               <div className="mb-4 p-3 bg-gray-50 rounded-lg border border-gray-100">
                 <p className="text-xs text-gray-500 mb-1">Call to Action:</p>
                 <div className="flex items-center gap-2 text-sm">
@@ -101,20 +101,20 @@ export default function PhotoList({ photo, onEdit, onDelete, isDeleting }) {
                   )}
                 </div>
               </div>
-            )}
+            )} */}
 
             {/* Metadata */}
-            <div className="flex items-center justify-between text-xs text-gray-400 mb-4">
+            {/* <div className="flex items-center justify-between text-xs text-gray-400 mb-4">
               <span>ID: {hero._id.slice(-6)}</span>
               <span>
                 Updated: {new Date(hero.updatedAt).toLocaleDateString()}
               </span>
-            </div>
+            </div> */}
 
             {/* Action Buttons */}
             <div className="flex justify-end gap-2 mt-4 pt-3 border-t border-gray-100">
               <button
-                onClick={() => onEdit(hero)}
+                onClick={() => onEdit(photo)}
                 className="px-3 py-1.5 bg-yellow-500 text-white rounded-md hover:bg-yellow-600 transition-colors flex items-center gap-1 text-sm"
               >
                 <svg
@@ -133,7 +133,7 @@ export default function PhotoList({ photo, onEdit, onDelete, isDeleting }) {
                 Edit
               </button>
               <button
-                onClick={() => onDelete(hero._id)}
+                onClick={() => onDelete(photo._id)}
                 disabled={isDeleting}
                 className="px-3 py-1.5 bg-red-500 text-white rounded-md hover:bg-red-600 transition-colors flex items-center gap-1 text-sm disabled:opacity-50 disabled:cursor-not-allowed"
               >
