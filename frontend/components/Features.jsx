@@ -83,7 +83,7 @@ export default function WhyChooseUs() {
 
           <div className="flex-1 relative rounded-[10px] overflow-hidden min-h-[420px] w-full">
             <img
-              src="https://images.unsplash.com/photo-1581093458791-9d8ea0e1af62?q=80&w=900&auto=format&fit=crop"
+              src="/factory.jpg"
               alt="factory"
               className="w-full h-full object-cover"
             />
