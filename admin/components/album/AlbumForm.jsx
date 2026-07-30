@@ -10,25 +10,25 @@ export default function AlbumForm({ initialData, onSubmit, onCancel }) {
 
   const [errors, setErrors] = useState({});
 
-  //   const handleChange = (e) => {
-  //     const { name, value } = e.target;
-  //     if (name.startsWith("cta.")) {
-  //       const ctaField = name.split(".")[1];
-  //       setFormData((prev) => ({
-  //         ...prev,
-  //         cta: {
-  //           ...prev.cta,
-  //           [ctaField]: value,
-  //         },
-  //       }));
-  //     } else {
-  //       setFormData((prev) => ({ ...prev, [name]: value }));
-  //     }
-  //     // Clear error for this field
-  //     if (errors[name]) {
-  //       setErrors((prev) => ({ ...prev, [name]: "" }));
-  //     }
-  //   };
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    if (name.startsWith("cta.")) {
+      const ctaField = name.split(".")[1];
+      setFormData((prev) => ({
+        ...prev,
+        cta: {
+          ...prev.cta,
+          [ctaField]: value,
+        },
+      }));
+    } else {
+      setFormData((prev) => ({ ...prev, [name]: value }));
+    }
+    // Clear error for this field
+    if (errors[name]) {
+      setErrors((prev) => ({ ...prev, [name]: "" }));
+    }
+  };
 
   const handleImageChange = (imageUrl) => {
     setFormData((prev) => ({ ...prev, image: imageUrl }));

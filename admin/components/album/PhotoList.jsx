@@ -29,7 +29,7 @@ export default function PhotoList({ photo, onEdit, onDelete, isDeleting }) {
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {hero.map((photo) => (
+      {photo.map((photo) => (
         <div
           key={photo._id}
           className="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 hover:shadow-lg transition-shadow"
@@ -65,7 +65,7 @@ export default function PhotoList({ photo, onEdit, onDelete, isDeleting }) {
             )}
 
             {/* Cloudinary Badge (optional) */}
-            {hero.image?.includes("cloudinary") && (
+            {photo.image?.includes("cloudinary") && (
               <div className="absolute top-2 right-2 bg-blue-500 text-white text-xs px-2 py-1 rounded-full">
                 Cloudinary
               </div>

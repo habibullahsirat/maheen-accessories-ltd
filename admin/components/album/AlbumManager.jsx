@@ -7,7 +7,7 @@ import Modal from "@/components/ui/Modal";
 import { toast } from "sonner";
 
 export default function AlbumManager() {
-  const { data: hero, mutate, isLoading } = useAlbumData();
+  const { data: photo, mutate, isLoading } = useAlbumData();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingAlbum, setEditingAlbum] = useState(null);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -19,7 +19,7 @@ export default function AlbumManager() {
   };
 
   const handleEdit = (photo) => {
-    setEditingHero(photo);
+    setEditingAlbum(photo);
     setIsModalOpen(true);
   };
 
@@ -29,7 +29,7 @@ export default function AlbumManager() {
     setIsDeleting(true);
     try {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/hero/${id}`,
+        `${process.env.NEXT_PUBLIC_API_URL}/api/album/${id}`,
         {
           method: "DELETE",
         },
@@ -37,10 +37,10 @@ export default function AlbumManager() {
 
       if (!response.ok) throw new Error("Failed to delete");
 
-      toast.success("Hero deleted successfully!");
+      toast.success("Photo deleted successfully!");
       mutate(); // Refresh the data
     } catch (error) {
-      toast.error("Failed to delete hero");
+      toast.error("Failed to delete photo");
       console.error("Delete error:", error);
     } finally {
       setIsDeleting(false);
@@ -50,11 +50,11 @@ export default function AlbumManager() {
   const handleSubmit = async (formData) => {
     setIsSubmitting(true);
     try {
-      const url = editingHero
-        ? `${process.env.NEXT_PUBLIC_API_URL}/api/hero/${editingHero._id}`
-        : `${process.env.NEXT_PUBLIC_API_URL}/api/hero`;
+      const url = editingAlbum
+        ? `${process.env.NEXT_PUBLIC_API_URL}/api/album/${editingAlbum._id}`
+        : `${process.env.NEXT_PUBLIC_API_URL}/api/album`;
 
-      const method = editingHero ? "PATCH" : "POST";
+      const method = editingAlbum ? "PATCH" : "POST";
 
       const response = await fetch(url, {
         method,
@@ -70,12 +70,14 @@ export default function AlbumManager() {
       }
 
       toast.success(
-        editingHero ? "Hero updated successfully!" : "Hero added successfully!",
+        editingAlbum
+          ? "Photo updated successfully!"
+          : "Photo added successfully!",
       );
       mutate(); // Refresh the data
       setIsModalOpen(false);
     } catch (error) {
-      toast.error(error.message || "Failed to save hero");
+      toast.error(error.message || "Failed to save photo");
       console.error("Save error:", error);
     } finally {
       setIsSubmitting(false);
@@ -87,7 +89,7 @@ export default function AlbumManager() {
       <div className="flex justify-center items-center min-h-screen">
         <div className="text-center">
           <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading heroes...</p>
+          <p className="text-gray-600">Loading photos...</p>
         </div>
       </div>
     );
@@ -98,10 +100,10 @@ export default function AlbumManager() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Hero Management</h1>
+          <h1 className="text-3xl font-bold text-gray-900">Album Management</h1>
           <p className="text-gray-600 mt-1">
-            Total Heroes:{" "}
-            <span className="font-semibold">{hero?.length || 0}</span>
+            Total Photos:{" "}
+            <span className="font-semibold">{photo?.length || 0}</span>
           </p>
         </div>
 
@@ -122,13 +124,13 @@ export default function AlbumManager() {
               d="M12 4v16m8-8H4"
             />
           </svg>
-          Add New Hero
+          Add New Photo
         </button>
       </div>
 
-      {/* Hero List */}
-      <HeroList
-        hero={hero}
+      {/* Photo List */}
+      <PhotoList
+        photo={photo}
         onEdit={handleEdit}
         onDelete={handleDelete}
         isDeleting={isDeleting}
@@ -138,10 +140,10 @@ export default function AlbumManager() {
       <Modal
         isOpen={isModalOpen}
         onClose={() => !isSubmitting && setIsModalOpen(false)}
-        title={editingHero ? "Edit Hero" : "Add New Hero"}
+        title={editingAlbum ? "Edit Photo" : "Add New Photo"}
       >
-        <HeroForm
-          initialData={editingHero}
+        <AlbumForm
+          initialData={editingAlbum}
           onSubmit={handleSubmit}
           onCancel={() => !isSubmitting && setIsModalOpen(false)}
         />
