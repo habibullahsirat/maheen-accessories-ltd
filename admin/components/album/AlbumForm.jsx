@@ -2,7 +2,7 @@
 import { useState } from "react";
 import PhotoUpload from "@/components/ui/PhotoUpload";
 
-export default function HeroForm({ initialData, onSubmit, onCancel }) {
+export default function AlbumForm({ initialData, onSubmit, onCancel }) {
   const [formData, setFormData] = useState({
     image: initialData?.image || "",
   });
@@ -64,7 +64,7 @@ export default function HeroForm({ initialData, onSubmit, onCancel }) {
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       {/* Title Field */}
-      <div>
+      {/* <div>
         <label
           htmlFor="title"
           className="block text-sm font-medium text-gray-700 mb-1"
@@ -85,10 +85,10 @@ export default function HeroForm({ initialData, onSubmit, onCancel }) {
         {errors.title && (
           <p className="mt-1 text-sm text-red-600">{errors.title}</p>
         )}
-      </div>
+      </div> */}
 
       {/* Subtitle field */}
-      <div>
+      {/* <div>
         <label
           htmlFor="Subtitle"
           className="block text-sm font-medium text-gray-700 mb-1"
@@ -109,10 +109,10 @@ export default function HeroForm({ initialData, onSubmit, onCancel }) {
         {errors.subtitle && (
           <p className="mt-1 text-sm text-red-600">{errors.subtitle}</p>
         )}
-      </div>
+      </div> */}
 
       {/* Description Field */}
-      <div>
+      {/* <div>
         <label
           htmlFor="description"
           className="block text-sm font-medium text-gray-700 mb-1"
@@ -133,12 +133,12 @@ export default function HeroForm({ initialData, onSubmit, onCancel }) {
         {errors.description && (
           <p className="mt-1 text-sm text-red-600">{errors.description}</p>
         )}
-      </div>
+      </div> */}
 
       {/* Image Upload - Using your PhotoUpload component */}
       <PhotoUpload
         name="image"
-        label="Hero Image"
+        label="Portfolio Photo"
         required={true}
         value={formData.image}
         onChange={handleImageChange}
@@ -146,7 +146,7 @@ export default function HeroForm({ initialData, onSubmit, onCancel }) {
       />
 
       {/* CTA Section */}
-      <div className="border-t border-gray-200 pt-4">
+      {/* <div className="border-t border-gray-200 pt-4">
         <h3 className="text-lg font-medium text-gray-900 mb-3">
           Call to Action (CTA)
         </h3>
@@ -188,7 +188,7 @@ export default function HeroForm({ initialData, onSubmit, onCancel }) {
             />
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* Form Actions */}
       <div className="flex justify-end gap-3 pt-4 border-t">
@@ -203,7 +203,7 @@ export default function HeroForm({ initialData, onSubmit, onCancel }) {
           type="submit"
           className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
         >
-          {initialData ? "Update" : "Create"} Hero
+          {initialData ? "Update" : "Create"} Photo
         </button>
       </div>
     </form>
