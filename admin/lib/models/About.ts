@@ -1,6 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 
-//Hero Section
+//About Section
 const ctaSchema = new Schema(
   {
     text: {
