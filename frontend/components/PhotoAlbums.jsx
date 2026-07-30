@@ -137,153 +137,161 @@
 //   );
 // }
 
-import { useState } from "react";
+// Version 2
+// import { useState } from "react";
+// import { ChevronRight, ArrowLeft, ArrowRight } from "lucide-react";
+
+// const albums = [
+//   {
+//     id: 1,
+//     side: "https://picsum.photos/seed/ribbon-tag/600/800",
+//     main: "https://picsum.photos/seed/metal-tags-brass/1000/700",
+//     title: "Customize Button",
+//     author: "BY MAHEEN ACCESSORIES LIMITED.",
+//   },
+//   {
+//     id: 2,
+//     side: "https://picsum.photos/seed/tape-rolls/600/800",
+//     main: "https://picsum.photos/seed/leather-buckle/1000/700",
+//     title: "Leather Buckle Set",
+//     author: "BY MAHEEN ACCESSORIES LIMITED.",
+//   },
+//   {
+//     id: 3,
+//     side: "https://picsum.photos/seed/thread-spool/600/800",
+//     main: "https://picsum.photos/seed/zipper-pull/1000/700",
+//     title: "Zipper Pull Hardware",
+//     author: "BY MAHEEN ACCESSORIES LIMITED.",
+//   },
+// ];
+
+// export default function PhotoAlbums() {
+//   const [index, setIndex] = useState(0);
+
+//   const total = albums.length;
+//   const prevIndex = (index - 1 + total) % total;
+//   const nextIndex = (index + 1) % total;
+
+//   const goPrev = () => setIndex(prevIndex);
+//   const goNext = () => setIndex(nextIndex);
+
+//   const current = albums[index];
+
+//   return (
+//     <section className="relative w-full overflow-hidden bg-white py-24">
+//       {/* Giant background watermark text */}
+//       <div className="pointer-events-none absolute inset-x-0 bottom-0 flex justify-center select-none">
+//         <span
+//           className="font-serif font-normal text-gray-300/70 leading-none whitespace-nowrap"
+//           style={{ fontSize: "13vw", letterSpacing: "0.05em" }}
+//         >
+//           PORTFOLIO
+//         </span>
+//       </div>
+
+//       {/* Header */}
+//       <div className="relative z-10 mx-auto mb-16 max-w-3xl px-6 text-center">
+//         <p className="mb-4 text-sm font-semibold tracking-wide text-gray-800">
+//           <span className="text-indigo-400">02 //</span> PHOTO ALBUMS
+//         </p>
+//         <h2 className="font-serif text-4xl leading-tight text-gray-900 sm:text-5xl">
+//           Collection of photos{" "}
+//           <span className="italic font-serif">All of Our</span>
+//           <br />
+//           Best Works
+//         </h2>
+//       </div>
+
+//       {/* Carousel */}
+//       <div className="relative z-10 mx-auto flex max-w-6xl items-center justify-center px-4">
+//         {/* Left arrow */}
+//         <button
+//           onClick={goPrev}
+//           aria-label="Previous"
+//           className="mr-4 hidden shrink-0 items-center justify-center text-gray-900 transition hover:-translate-x-1 sm:flex"
+//         >
+//           <ArrowLeft size={28} strokeWidth={1.5} />
+//         </button>
+
+//         {/* Track */}
+//         <div className="flex w-full items-center justify-center gap-0 overflow-hidden">
+//           {/* Left peek image */}
+//           <div className="hidden h-[300px] w-1/4 shrink-0 -mr-6 overflow-hidden rounded-2xl md:block">
+//             <img
+//               src={albums[prevIndex].side}
+//               alt=""
+//               className="h-full w-full object-cover"
+//             />
+//           </div>
+
+//           {/* Main card */}
+//           <div className="relative z-10 h-[460px] w-full max-w-2xl shrink-0 overflow-hidden rounded-2xl shadow-xl">
+//             <img
+//               src={current.main}
+//               alt={current.title}
+//               className="h-full w-full object-cover"
+//             />
+
+//             {/* Next chip button, top right */}
+//             <button
+//               onClick={goNext}
+//               aria-label="Next"
+//               className="absolute right-5 top-5 flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-gray-900 shadow-md transition hover:bg-white"
+//             >
+//               <ChevronRight size={20} strokeWidth={2} />
+//             </button>
+
+//             {/* Bottom-left caption overlay */}
+//             <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/10 via-transparent to-transparent px-6 pb-6 pt-10">
+//               <p className="text-lg font-medium text-gray-900">
+//                 {current.title}
+//               </p>
+//               <p className="mt-0.5 text-xs font-medium tracking-wide text-gray-500">
+//                 {current.author}
+//               </p>
+//             </div>
+//           </div>
+
+//           {/* Right peek image */}
+//           <div className="hidden h-[300px] w-1/4 shrink-0 -ml-6 overflow-hidden rounded-2xl md:block">
+//             <img
+//               src={albums[nextIndex].side}
+//               alt=""
+//               className="h-full w-full object-cover"
+//             />
+//           </div>
+//         </div>
+
+//         {/* Right arrow */}
+//         <button
+//           onClick={goNext}
+//           aria-label="Next"
+//           className="ml-4 hidden shrink-0 items-center justify-center text-gray-900 transition hover:translate-x-1 sm:flex"
+//         >
+//           <ArrowRight size={28} strokeWidth={1.5} />
+//         </button>
+//       </div>
+
+//       {/* Dots */}
+//       <div className="relative z-10 mt-8 flex justify-center gap-2">
+//         {albums.map((a, i) => (
+//           <button
+//             key={a.id}
+//             onClick={() => setIndex(i)}
+//             aria-label={`Go to slide ${i + 1}`}
+//             className={`h-1.5 rounded-full transition-all ${
+//               i === index ? "w-6 bg-gray-900" : "w-1.5 bg-gray-300"
+//             }`}
+//           />
+//         ))}
+//       </div>
+//     </section>
+//   );
+// }
+
+//Version 3
+"use client";
+
+import Image from "next/image";
+import { useEffect, useState } from "react";
 import { ChevronRight, ArrowLeft, ArrowRight } from "lucide-react";
-
-const albums = [
-  {
-    id: 1,
-    side: "https://picsum.photos/seed/ribbon-tag/600/800",
-    main: "https://picsum.photos/seed/metal-tags-brass/1000/700",
-    title: "Customize Button",
-    author: "BY MAHEEN ACCESSORIES LIMITED.",
-  },
-  {
-    id: 2,
-    side: "https://picsum.photos/seed/tape-rolls/600/800",
-    main: "https://picsum.photos/seed/leather-buckle/1000/700",
-    title: "Leather Buckle Set",
-    author: "BY MAHEEN ACCESSORIES LIMITED.",
-  },
-  {
-    id: 3,
-    side: "https://picsum.photos/seed/thread-spool/600/800",
-    main: "https://picsum.photos/seed/zipper-pull/1000/700",
-    title: "Zipper Pull Hardware",
-    author: "BY MAHEEN ACCESSORIES LIMITED.",
-  },
-];
-
-export default function PhotoAlbums() {
-  const [index, setIndex] = useState(0);
-
-  const total = albums.length;
-  const prevIndex = (index - 1 + total) % total;
-  const nextIndex = (index + 1) % total;
-
-  const goPrev = () => setIndex(prevIndex);
-  const goNext = () => setIndex(nextIndex);
-
-  const current = albums[index];
-
-  return (
-    <section className="relative w-full overflow-hidden bg-white py-24">
-      {/* Giant background watermark text */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 flex justify-center select-none">
-        <span
-          className="font-serif font-normal text-gray-300/70 leading-none whitespace-nowrap"
-          style={{ fontSize: "13vw", letterSpacing: "0.05em" }}
-        >
-          PORTFOLIO
-        </span>
-      </div>
-
-      {/* Header */}
-      <div className="relative z-10 mx-auto mb-16 max-w-3xl px-6 text-center">
-        <p className="mb-4 text-sm font-semibold tracking-wide text-gray-800">
-          <span className="text-indigo-400">02 //</span> PHOTO ALBUMS
-        </p>
-        <h2 className="font-serif text-4xl leading-tight text-gray-900 sm:text-5xl">
-          Collection of photos{" "}
-          <span className="italic font-serif">All of Our</span>
-          <br />
-          Best Works
-        </h2>
-      </div>
-
-      {/* Carousel */}
-      <div className="relative z-10 mx-auto flex max-w-6xl items-center justify-center px-4">
-        {/* Left arrow */}
-        <button
-          onClick={goPrev}
-          aria-label="Previous"
-          className="mr-4 hidden shrink-0 items-center justify-center text-gray-900 transition hover:-translate-x-1 sm:flex"
-        >
-          <ArrowLeft size={28} strokeWidth={1.5} />
-        </button>
-
-        {/* Track */}
-        <div className="flex w-full items-center justify-center gap-0 overflow-hidden">
-          {/* Left peek image */}
-          <div className="hidden h-[300px] w-1/4 shrink-0 -mr-6 overflow-hidden rounded-2xl md:block">
-            <img
-              src={albums[prevIndex].side}
-              alt=""
-              className="h-full w-full object-cover"
-            />
-          </div>
-
-          {/* Main card */}
-          <div className="relative z-10 h-[460px] w-full max-w-2xl shrink-0 overflow-hidden rounded-2xl shadow-xl">
-            <img
-              src={current.main}
-              alt={current.title}
-              className="h-full w-full object-cover"
-            />
-
-            {/* Next chip button, top right */}
-            <button
-              onClick={goNext}
-              aria-label="Next"
-              className="absolute right-5 top-5 flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-gray-900 shadow-md transition hover:bg-white"
-            >
-              <ChevronRight size={20} strokeWidth={2} />
-            </button>
-
-            {/* Bottom-left caption overlay */}
-            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/10 via-transparent to-transparent px-6 pb-6 pt-10">
-              <p className="text-lg font-medium text-gray-900">
-                {current.title}
-              </p>
-              <p className="mt-0.5 text-xs font-medium tracking-wide text-gray-500">
-                {current.author}
-              </p>
-            </div>
-          </div>
-
-          {/* Right peek image */}
-          <div className="hidden h-[300px] w-1/4 shrink-0 -ml-6 overflow-hidden rounded-2xl md:block">
-            <img
-              src={albums[nextIndex].side}
-              alt=""
-              className="h-full w-full object-cover"
-            />
-          </div>
-        </div>
-
-        {/* Right arrow */}
-        <button
-          onClick={goNext}
-          aria-label="Next"
-          className="ml-4 hidden shrink-0 items-center justify-center text-gray-900 transition hover:translate-x-1 sm:flex"
-        >
-          <ArrowRight size={28} strokeWidth={1.5} />
-        </button>
-      </div>
-
-      {/* Dots */}
-      <div className="relative z-10 mt-8 flex justify-center gap-2">
-        {albums.map((a, i) => (
-          <button
-            key={a.id}
-            onClick={() => setIndex(i)}
-            aria-label={`Go to slide ${i + 1}`}
-            className={`h-1.5 rounded-full transition-all ${
-              i === index ? "w-6 bg-gray-900" : "w-1.5 bg-gray-300"
-            }`}
-          />
-        ))}
-      </div>
-    </section>
-  );
-}
