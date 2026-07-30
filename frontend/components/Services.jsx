@@ -696,7 +696,10 @@ export default function Services() {
   useEffect(() => {
     async function fetchServices() {
       try {
-        const res = await fetch("http://localhost:3000/api/service");
+        // const res = await fetch("http://localhost:3000/api/service");
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_ADMIN_API}/api/service`,
+        );
         const data = await res.json();
         setServices(data || []);
       } catch (err) {

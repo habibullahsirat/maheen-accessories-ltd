@@ -158,7 +158,10 @@ export default function Hero() {
   useEffect(() => {
     const fetchHeroes = async () => {
       try {
-        const res = await fetch("http://localhost:3000/api/hero");
+        // const res = await fetch("http://localhost:3000/api/hero");
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_ADMIN_API}/api/hero`,
+        );
         const data = await res.json();
         setHeroes(data || []);
       } catch (error) {

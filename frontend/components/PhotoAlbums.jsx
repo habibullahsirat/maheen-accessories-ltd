@@ -304,9 +304,12 @@ export default function PhotoAlbums() {
   useEffect(() => {
     const fetchAlbums = async () => {
       try {
-        const res = await fetch("http://localhost:3000/api/album", {
-          cache: "no-store",
-        });
+        // const res = await fetch("http://localhost:3000/api/album", {
+        //   cache: "no-store",
+        // });
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_ADMIN_API}/api/album`,
+        );
 
         const data = await res.json();
         setAlbums(data);
