@@ -2,7 +2,7 @@
 import { useState } from "react";
 import PartnerList from "./PartnerList";
 import { usePartnerData } from "@/lib/DataFetch/SWRDataFetch";
-import AlbumForm from "./AlbumForm";
+import PartnerForm from "./PartnerForm";
 import Modal from "@/components/ui/Modal";
 import { toast } from "sonner";
 
@@ -144,8 +144,8 @@ export default function PartnerManager() {
         onClose={() => !isSubmitting && setIsModalOpen(false)}
         title={editingPartner ? "Edit Partner" : "Add New Partner"}
       >
-        <AlbumForm
-          initialData={editingAlbum}
+        <PartnerForm
+          initialData={editingPartner}
           onSubmit={handleSubmit}
           onCancel={() => !isSubmitting && setIsModalOpen(false)}
         />
