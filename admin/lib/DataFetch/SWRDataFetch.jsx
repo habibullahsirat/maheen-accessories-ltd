@@ -38,3 +38,8 @@ export const useMemberData = () => {
   const { data, error, mutate } = useSWR(`${API_URL}/api/member`, fetcher);
   return { data, error, isLoading: !data && !error, mutate };
 };
+
+export const usePortfolioData = () => {
+  const { data, error, mutate } = useSWR(`${API_URL}/api/portfolio`, fetcher);
+  return { data, error, isLoading: !data && !error, mutate };
+};
