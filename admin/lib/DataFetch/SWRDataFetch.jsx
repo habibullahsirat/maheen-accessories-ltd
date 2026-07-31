@@ -23,3 +23,8 @@ export const useAboutData = () => {
   const { data, error, mutate } = useSWR(`${API_URL}/api/about`, fetcher);
   return { data, error, isLoading: !data && !error, mutate };
 };
+
+export const useFeatureData = () => {
+  const { data, error, mutate } = useSWR(`${API_URL}/api/feature`, fetcher);
+  return { data, error, isLoading: !data && !error, mutate };
+};
