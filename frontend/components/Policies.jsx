@@ -140,8 +140,149 @@
 
 // Dynamic Version
 
+// "use client";
+
+// import Link from "next/link";
+// import { useEffect, useState } from "react";
+
+// const Eyebrow = ({ children }) => (
+//   <p
+//     className="font-sora font-bold uppercase tracking-wide text-[18px] leading-[32px]"
+//     style={{
+//       backgroundImage: "linear-gradient(0deg,#8B68CE 15.91%,#9AD2ED 90.91%)",
+//       WebkitBackgroundClip: "text",
+//       WebkitTextFillColor: "transparent",
+//       backgroundClip: "text",
+//     }}
+//   >
+//     {children}
+//   </p>
+// );
+
+// const SectionHeading = ({ eyebrow, line1, italic, line2, right, center }) => (
+//   <div
+//     className={`flex flex-col md:flex-row ${
+//       center
+//         ? "items-center text-center"
+//         : "items-start md:items-end justify-between"
+//     } gap-8`}
+//   >
+//     <div>
+//       <Eyebrow>{eyebrow}</Eyebrow>
+
+//       <h2 className="font-sora font-normal text-[36px] md:text-[50px] leading-[1.15] tracking-[-1.06px] text-black mt-2">
+//         {line1} <span className="font-display italic">{italic}</span>
+//         {line2 && (
+//           <>
+//             <br />
+//             {line2}
+//           </>
+//         )}
+//       </h2>
+//     </div>
+
+//     {right}
+//   </div>
+// );
+
+// export default function Policies() {
+//   const [policies, setPolicies] = useState([]);
+//   const [loading, setLoading] = useState(true);
+
+//   useEffect(() => {
+//     async function fetchPolicies() {
+//       try {
+//         const res = await fetch("http://localhost:3000/api/policy");
+//         const data = await res.json();
+//         setPolicies(data);
+//       } catch (error) {
+//         console.error("Failed to fetch policies:", error);
+//       } finally {
+//         setLoading(false);
+//       }
+//     }
+
+//     fetchPolicies();
+//   }, []);
+
+//   if (loading) {
+//     return (
+//       <section className="max-w-[1466px] mx-auto px-6 py-28">
+//         <p className="text-center text-gray-500">Loading...</p>
+//       </section>
+//     );
+//   }
+
+//   return (
+//     <section className="max-w-[1466px] mx-auto px-6 py-28">
+//       <SectionHeading
+//         eyebrow="05 // Policies"
+//         line1="Our Smart"
+//         italic="Policies"
+//         right={
+//           <p className="font-sora font-light text-black/70 text-[18px] leading-[1.55] max-w-[620px] text-right">
+//             We're deeply passionate about keeping every promise, conveying our
+//             commitment to quality in everything we deliver.
+//           </p>
+//         }
+//       />
+
+//       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
+//         {policies.map((policy, index) => (
+//           <div
+//             key={policy._id}
+//             className="group relative overflow-hidden aspect-[313/361]"
+//           >
+//             {/* Background Image (Always Visible) */}
+//             <img
+//               src={policy.image}
+//               alt={policy.title}
+//               className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+//             />
+
+//             {/* Overlay */}
+//             <div className="absolute inset-0 bg-black/30 group-hover:bg-black/65 transition-all duration-500" />
+
+//             {/* Content */}
+//             <div className="relative z-10 flex flex-col justify-end h-full p-8 text-white">
+//               {/* Serial */}
+//               <span className="font-sora text-[20px] font-light">
+//                 {String(index + 1).padStart(2, "0")}
+//               </span>
+
+//               {/* Title */}
+//               <h3 className="mt-3 font-sora font-bold text-[22px] leading-[1.4]">
+//                 {policy.title}
+//               </h3>
+
+//               {/* Hidden Content */}
+//               <div className="overflow-hidden transition-all duration-500 max-h-0 opacity-0 group-hover:max-h-52 group-hover:opacity-100">
+//                 <p className="mt-5 text-[15px] leading-7 text-white/90">
+//                   {policy.description}
+//                 </p>
+
+//                 <Link
+//                   href={policy.cta.href}
+//                   className="inline-flex items-center gap-2 mt-6 font-sora font-semibold text-sm uppercase tracking-wide"
+//                 >
+//                   {policy.cta.text}
+//                   <span className="transition-transform group-hover:translate-x-1">
+//                     →
+//                   </span>
+//                 </Link>
+//               </div>
+//             </div>
+//           </div>
+//         ))}
+//       </div>
+//     </section>
+//   );
+// }
+
+// Dynamic version 2
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -190,7 +331,7 @@ export default function Policies() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    async function fetchPolicies() {
+    const fetchPolicies = async () => {
       try {
         const res = await fetch("http://localhost:3000/api/policy");
         const data = await res.json();
@@ -200,7 +341,7 @@ export default function Policies() {
       } finally {
         setLoading(false);
       }
-    }
+    };
 
     fetchPolicies();
   }, []);
@@ -208,7 +349,7 @@ export default function Policies() {
   if (loading) {
     return (
       <section className="max-w-[1466px] mx-auto px-6 py-28">
-        <p className="text-center text-gray-500">Loading...</p>
+        <p className="text-center font-sora">Loading...</p>
       </section>
     );
   }
@@ -221,8 +362,8 @@ export default function Policies() {
         italic="Policies"
         right={
           <p className="font-sora font-light text-black/70 text-[18px] leading-[1.55] max-w-[620px] text-right">
-            We're deeply passionate about keeping every promise, conveying our
-            commitment to quality in everything we deliver.
+            We&apos;re deeply passionate about keeping every promise, conveying
+            our commitment to quality in everything we deliver.
           </p>
         }
       />
@@ -231,45 +372,65 @@ export default function Policies() {
         {policies.map((policy, index) => (
           <div
             key={policy._id}
-            className="group relative overflow-hidden aspect-[313/361]"
+            className="group relative overflow-hidden bg-[#F6F6F6] aspect-[313/361] p-8 transition-all duration-500"
           >
-            {/* Background Image (Always Visible) */}
-            <img
-              src={policy.image}
-              alt={policy.title}
-              className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-            />
+            {/* Default Content */}
+            <div className="absolute inset-0 p-8 flex flex-col justify-between transition-all duration-500 group-hover:opacity-0">
+              <div>
+                <Image
+                  src={policy.image}
+                  alt={policy.title}
+                  width={56}
+                  height={56}
+                  className="object-contain"
+                />
+              </div>
 
-            {/* Overlay */}
-            <div className="absolute inset-0 bg-black/30 group-hover:bg-black/65 transition-all duration-500" />
+              <div className="space-y-3">
+                <span className="block font-sora text-[20px] font-light text-black">
+                  {(index + 1).toString().padStart(2, "0")}
+                </span>
 
-            {/* Content */}
-            <div className="relative z-10 flex flex-col justify-end h-full p-8 text-white">
-              {/* Serial */}
-              <span className="font-sora text-[20px] font-light">
-                {String(index + 1).padStart(2, "0")}
-              </span>
+                <h3 className="font-sora font-bold text-[20px] leading-[1.5] text-black">
+                  {policy.title}
+                </h3>
+              </div>
+            </div>
 
-              {/* Title */}
-              <h3 className="mt-3 font-sora font-bold text-[22px] leading-[1.4]">
-                {policy.title}
-              </h3>
+            {/* Hover Content */}
+            <div className="absolute inset-0 bg-black text-white p-8 flex flex-col justify-between opacity-0 translate-y-5 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
+              <div>
+                <Image
+                  src={policy.image}
+                  alt={policy.title}
+                  width={56}
+                  height={56}
+                  className="object-contain brightness-0 invert"
+                />
+              </div>
 
-              {/* Hidden Content */}
-              <div className="overflow-hidden transition-all duration-500 max-h-0 opacity-0 group-hover:max-h-52 group-hover:opacity-100">
-                <p className="mt-5 text-[15px] leading-7 text-white/90">
+              <div className="space-y-4">
+                <span className="block font-sora text-[20px] font-light">
+                  {(index + 1).toString().padStart(2, "0")}
+                </span>
+
+                <h3 className="font-sora font-bold text-[20px] leading-[1.5]">
+                  {policy.title}
+                </h3>
+
+                <p className="font-sora text-[15px] leading-[1.7] text-white/80">
                   {policy.description}
                 </p>
 
-                <Link
-                  href={policy.cta.href}
-                  className="inline-flex items-center gap-2 mt-6 font-sora font-semibold text-sm uppercase tracking-wide"
-                >
-                  {policy.cta.text}
-                  <span className="transition-transform group-hover:translate-x-1">
-                    →
-                  </span>
-                </Link>
+                {policy.cta?.text && (
+                  <Link
+                    href={policy.cta.href || "/"}
+                    className="inline-flex items-center gap-2 font-sora font-semibold text-white hover:text-[#9AD2ED] transition-colors"
+                  >
+                    {policy.cta.text}
+                    <span>→</span>
+                  </Link>
+                )}
               </div>
             </div>
           </div>
