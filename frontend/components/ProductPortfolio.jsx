@@ -359,7 +359,7 @@ export default function Portfolio() {
 
       {/* Button */}
       <div className="mt-20 flex justify-center">
-        <button className="group relative flex h-[56px] items-center gap-3 px-10 text-[15px] tracking-wide transition hover:bg-black hover:text-white">
+        <button className="group relative flex h-[56px] items-center gap-3 px-10 text-[15px] tracking-wide transition ">
           <span>Explore Now</span>
 
           <svg
