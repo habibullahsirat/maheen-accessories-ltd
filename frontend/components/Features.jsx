@@ -171,9 +171,9 @@ export default function WhyChooseUs() {
   useEffect(() => {
     const fetchFeature = async () => {
       try {
-        const res = await fetch("http://localhost:3000/api/feature", {
-          cache: "no-store",
-        });
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_ADMIN_API}/api/feature`,
+        );
 
         const data = await res.json();
 
