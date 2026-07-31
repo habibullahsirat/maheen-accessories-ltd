@@ -236,9 +236,13 @@ export default function Management() {
   useEffect(() => {
     const fetchMembers = async () => {
       try {
-        const res = await fetch("http://localhost:3000/api/member", {
-          cache: "no-store",
-        });
+        // const res = await fetch("http://localhost:3000/api/member", {
+        //   cache: "no-store",
+        // });
+
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_ADMIN_API}/api/member`,
+        );
 
         if (!res.ok) {
           throw new Error("Failed to fetch members");
