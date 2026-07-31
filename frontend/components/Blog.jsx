@@ -199,9 +199,9 @@ export default function Blog() {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const res = await fetch("http://localhost:3000/api/blog", {
-          cache: "no-store",
-        });
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_ADMIN_API}/api/blog`,
+        );
 
         if (!res.ok) {
           throw new Error("Failed to fetch blogs");
