@@ -3,35 +3,84 @@ import { useState } from "react";
 import PhotoUpload from "@/components/ui/PhotoUpload";
 
 export default function MemberForm({ initialData, onSubmit, onCancel }) {
+  //   const [formData, setFormData] = useState({
+  //     name: initialData?.name || "",
+  //     designation: initialData?.designation || "",
+  //     image: initialData?.image || "",
+  //     cta: {
+  //       text: initialData?.cta?.text || "",
+  //       href: initialData?.cta?.href || "",
+  //     },
+  //   });
+
   const [formData, setFormData] = useState({
     name: initialData?.name || "",
     designation: initialData?.designation || "",
     image: initialData?.image || "",
-    cta: {
-      text: initialData?.cta?.text || "",
-      href: initialData?.cta?.href || "",
+
+    facebook: {
+      text: initialData?.facebook?.text || "",
+      href: initialData?.facebook?.href || "",
+    },
+
+    instagram: {
+      text: initialData?.instagram?.text || "",
+      href: initialData?.instagram?.href || "",
+    },
+
+    linkedin: {
+      text: initialData?.linkedin?.text || "",
+      href: initialData?.linkedin?.href || "",
     },
   });
 
   const [errors, setErrors] = useState({});
 
+  //   const handleChange = (e) => {
+  //     const { name, value } = e.target;
+  //     if (name.startsWith("cta.")) {
+  //       const ctaField = name.split(".")[1];
+  //       setFormData((prev) => ({
+  //         ...prev,
+  //         cta: {
+  //           ...prev.cta,
+  //           [ctaField]: value,
+  //         },
+  //       }));
+  //     } else {
+  //       setFormData((prev) => ({ ...prev, [name]: value }));
+  //     }
+  //     // Clear error for this field
+  //     if (errors[name]) {
+  //       setErrors((prev) => ({ ...prev, [name]: "" }));
+  //     }
+  //   };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
-    if (name.startsWith("cta.")) {
-      const ctaField = name.split(".")[1];
+
+    if (name.includes(".")) {
+      const [section, field] = name.split(".");
+
       setFormData((prev) => ({
         ...prev,
-        cta: {
-          ...prev.cta,
-          [ctaField]: value,
+        [section]: {
+          ...prev[section],
+          [field]: value,
         },
       }));
     } else {
-      setFormData((prev) => ({ ...prev, [name]: value }));
+      setFormData((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
     }
-    // Clear error for this field
+
     if (errors[name]) {
-      setErrors((prev) => ({ ...prev, [name]: "" }));
+      setErrors((prev) => ({
+        ...prev,
+        [name]: "",
+      }));
     }
   };
 
@@ -128,7 +177,7 @@ export default function MemberForm({ initialData, onSubmit, onCancel }) {
       />
 
       {/* CTA Section */}
-      <div className="border-t border-gray-200 pt-4">
+      {/* <div className="border-t border-gray-200 pt-4">
         <h3 className="text-lg font-medium text-gray-900 mb-3">
           Call to Action (CTA)
         </h3>
@@ -139,7 +188,7 @@ export default function MemberForm({ initialData, onSubmit, onCancel }) {
               htmlFor="cta.text"
               className="block text-sm font-medium text-gray-700 mb-1"
             >
-              CTA Text
+              Facebook
             </label>
             <input
               type="text"
@@ -157,7 +206,7 @@ export default function MemberForm({ initialData, onSubmit, onCancel }) {
               htmlFor="cta.href"
               className="block text-sm font-medium text-gray-700 mb-1"
             >
-              CTA Link
+              Facebook Link
             </label>
             <input
               type="text"
@@ -168,6 +217,224 @@ export default function MemberForm({ initialData, onSubmit, onCancel }) {
               placeholder="e.g., /factory-machinery"
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
+          </div>
+        </div>
+
+        <div className="space-y-4">
+          <div>
+            <label
+              htmlFor="cta.text"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Instagram
+            </label>
+            <input
+              type="text"
+              id="cta.text"
+              name="cta.text"
+              value={formData.cta.text}
+              onChange={handleChange}
+              placeholder="e.g., View Factory"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+
+          <div>
+            <label
+              htmlFor="cta.href"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Instagram Link
+            </label>
+            <input
+              type="text"
+              id="cta.href"
+              name="cta.href"
+              value={formData.cta.href}
+              onChange={handleChange}
+              placeholder="e.g., /factory-machinery"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+        </div>
+
+        <div className="space-y-4">
+          <div>
+            <label
+              htmlFor="cta.text"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Linkedin
+            </label>
+            <input
+              type="text"
+              id="cta.text"
+              name="cta.text"
+              value={formData.cta.text}
+              onChange={handleChange}
+              placeholder="e.g., View Factory"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+
+          <div>
+            <label
+              htmlFor="cta.href"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Linkedin Link
+            </label>
+            <input
+              type="text"
+              id="cta.href"
+              name="cta.href"
+              value={formData.cta.href}
+              onChange={handleChange}
+              placeholder="e.g., /factory-machinery"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+        </div>
+      </div> */}
+
+      {/* Social Links */}
+      <div className="border-t border-gray-200 pt-4">
+        <h3 className="text-lg font-medium text-gray-900 mb-5">
+          Social Media Links
+        </h3>
+
+        {/* Facebook */}
+        <div className="mb-8">
+          <h4 className="font-medium text-gray-800 mb-3">Facebook</h4>
+
+          <div className="space-y-4">
+            <div>
+              <label
+                htmlFor="facebook.text"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
+                Button Text
+              </label>
+
+              <input
+                id="facebook.text"
+                name="facebook.text"
+                type="text"
+                value={formData.facebook.text}
+                onChange={handleChange}
+                placeholder="Facebook"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+
+            <div>
+              <label
+                htmlFor="facebook.href"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
+                Facebook Link
+              </label>
+
+              <input
+                id="facebook.href"
+                name="facebook.href"
+                type="text"
+                value={formData.facebook.href}
+                onChange={handleChange}
+                placeholder="https://facebook.com/..."
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Instagram */}
+        <div className="mb-8">
+          <h4 className="font-medium text-gray-800 mb-3">Instagram</h4>
+
+          <div className="space-y-4">
+            <div>
+              <label
+                htmlFor="instagram.text"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
+                Button Text
+              </label>
+
+              <input
+                id="instagram.text"
+                name="instagram.text"
+                type="text"
+                value={formData.instagram.text}
+                onChange={handleChange}
+                placeholder="Instagram"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+
+            <div>
+              <label
+                htmlFor="instagram.href"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
+                Instagram Link
+              </label>
+
+              <input
+                id="instagram.href"
+                name="instagram.href"
+                type="text"
+                value={formData.instagram.href}
+                onChange={handleChange}
+                placeholder="https://instagram.com/..."
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Linkedin */}
+        <div>
+          <h4 className="font-medium text-gray-800 mb-3">LinkedIn</h4>
+
+          <div className="space-y-4">
+            <div>
+              <label
+                htmlFor="linkedin.text"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
+                Button Text
+              </label>
+
+              <input
+                id="linkedin.text"
+                name="linkedin.text"
+                type="text"
+                value={formData.linkedin.text}
+                onChange={handleChange}
+                placeholder="LinkedIn"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+
+            <div>
+              <label
+                htmlFor="linkedin.href"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
+                LinkedIn Link
+              </label>
+
+              <input
+                id="linkedin.href"
+                name="linkedin.href"
+                type="text"
+                value={formData.linkedin.href}
+                onChange={handleChange}
+                placeholder="https://linkedin.com/in/..."
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
           </div>
         </div>
       </div>
