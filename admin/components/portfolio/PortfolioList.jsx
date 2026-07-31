@@ -79,36 +79,6 @@ export default function PortfolioList({ photo, onEdit, onDelete, isDeleting }) {
             </h3>
             <p className="text-gray-600 mb-4 line-clamp-2">{photo.author}</p>
 
-            {/* CTA Display */}
-            {/* {hero.cta && (hero.cta.text || hero.cta.href) && (
-              <div className="mb-4 p-3 bg-gray-50 rounded-lg border border-gray-100">
-                <p className="text-xs text-gray-500 mb-1">Call to Action:</p>
-                <div className="flex items-center gap-2 text-sm">
-                  {hero.cta.text && (
-                    <span className="font-medium text-blue-600">
-                      {hero.cta.text}
-                    </span>
-                  )}
-                  {hero.cta.href && (
-                    <>
-                      <span className="text-gray-400">→</span>
-                      <span className="text-gray-600 font-mono text-xs">
-                        {hero.cta.href}
-                      </span>
-                    </>
-                  )}
-                </div>
-              </div>
-            )} */}
-
-            {/* Metadata */}
-            {/* <div className="flex items-center justify-between text-xs text-gray-400 mb-4">
-              <span>ID: {hero._id.slice(-6)}</span>
-              <span>
-                Updated: {new Date(hero.updatedAt).toLocaleDateString()}
-              </span>
-            </div> */}
-
             {/* Action Buttons */}
             <div className="flex justify-end gap-2 mt-4 pt-3 border-t border-gray-100">
               <button

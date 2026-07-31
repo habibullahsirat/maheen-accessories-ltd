@@ -3,16 +3,6 @@ import { useState } from "react";
 import PhotoUpload from "@/components/ui/PhotoUpload";
 
 export default function MemberForm({ initialData, onSubmit, onCancel }) {
-  //   const [formData, setFormData] = useState({
-  //     name: initialData?.name || "",
-  //     designation: initialData?.designation || "",
-  //     image: initialData?.image || "",
-  //     cta: {
-  //       text: initialData?.cta?.text || "",
-  //       href: initialData?.cta?.href || "",
-  //     },
-  //   });
-
   const [formData, setFormData] = useState({
     name: initialData?.name || "",
     designation: initialData?.designation || "",
