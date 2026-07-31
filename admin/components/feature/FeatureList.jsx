@@ -39,7 +39,7 @@ export default function FeatureList({ feature, onEdit, onDelete, isDeleting }) {
             {!imageErrors[feature._id] ? (
               <Image
                 src={feature.image}
-                alt={feature.title}
+                alt={feature.featureOne}
                 fill
                 className="object-cover"
                 onError={() => handleImageError(feature._id)}

@@ -1,17 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 
 //Feature Section
-const featureSchema = new Schema(
-  {
-    text: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-  },
-  { _id: false },
-);
-
 const ctaSchema = new Schema(
   {
     text: {
@@ -40,16 +29,23 @@ const featureSectionSchema = new Schema(
       required: true,
     },
     featureOne: {
-      type: featureSchema,
+      type: String,
+      required: true,
     },
+
     featureTwo: {
-      type: featureSchema,
+      type: String,
+      required: true,
     },
+
     featureThree: {
-      type: featureSchema,
+      type: String,
+      required: true,
     },
+
     featureFour: {
-      type: featureSchema,
+      type: String,
+      required: true,
     },
     cta: {
       type: ctaSchema,
