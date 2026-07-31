@@ -33,3 +33,8 @@ export const usePolicyData = () => {
   const { data, error, mutate } = useSWR(`${API_URL}/api/policy`, fetcher);
   return { data, error, isLoading: !data && !error, mutate };
 };
+
+export const useMemberData = () => {
+  const { data, error, mutate } = useSWR(`${API_URL}/api/member`, fetcher);
+  return { data, error, isLoading: !data && !error, mutate };
+};

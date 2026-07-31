@@ -18,13 +18,13 @@ const ctaSchema = new Schema(
 
 const memberSectionSchema = new Schema(
   {
-    title: {
+    name: {
       type: String,
       required: true,
       trim: true,
     },
 
-    description: {
+    designation: {
       type: String,
       required: true,
       trim: true,
@@ -35,7 +35,13 @@ const memberSectionSchema = new Schema(
       required: true,
     },
 
-    cta: {
+    facebook: {
+      type: ctaSchema,
+    },
+    instagram: {
+      type: ctaSchema,
+    },
+    linkedin: {
       type: ctaSchema,
     },
   },
