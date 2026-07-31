@@ -1137,7 +1137,7 @@ import About from "@/components/About";
 import Features from "@/components/Features";
 import Policies from "@/components/Policies";
 import Management from "@/components/Management";
-import ProductPortfolio from "@/components/Hero";
+import ProductPortfolio from "@/components/ProductPortfolio";
 import Testimonial from "@/components/Testimonial";
 import Partners from "@/components/Partners";
 import Blog from "@/components/Blog";

@@ -53,7 +53,7 @@ export default function Policies() {
       try {
         // const res = await fetch("http://localhost:3000/api/policy");
         const res = await fetch(
-          `${process.env.NEXT_PUBLIC_ADMIN_API}/api/heroes`,
+          `${process.env.NEXT_PUBLIC_ADMIN_API}/api/policy`,
         );
         const data = await res.json();
         setPolicies(data);
