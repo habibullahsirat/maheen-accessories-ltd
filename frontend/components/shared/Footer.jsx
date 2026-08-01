@@ -207,11 +207,16 @@ export default function Footer() {
           {/* Center */}
           <div className="flex flex-col items-center text-center gap-6 sm:gap-8">
             <div className="flex items-center gap-3">
-              <div className="h-9 w-9 rounded-full bg-gradient-to-b from-[#8B68CE] to-[#9AD2ED]" />
+              {/* <div className="h-9 w-9 rounded-full bg-gradient-to-b from-[#8B68CE] to-[#9AD2ED]" />
 
               <span className="font-hero text-xs sm:text-sm uppercase tracking-[3px]">
                 Maheen Accessories Ltd.
-              </span>
+              </span> */}
+              <img
+                src="/Logo.png"
+                alt="Maheen Accessories Logo"
+                className="h-9 w-9"
+              />
             </div>
 
             <p className="font-sora text-base sm:text-lg uppercase tracking-[2px] text-[#DDDDDD]">
