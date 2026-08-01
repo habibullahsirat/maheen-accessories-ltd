@@ -77,7 +77,7 @@ export default function LoginPage() {
     await new Promise((resolve) => setTimeout(resolve, 700));
     localStorage.setItem("adminAuth", "true");
     localStorage.setItem("adminEmail", email);
-    router.push("/admin");
+    router.push("/admin/");
   };
 
   return (
