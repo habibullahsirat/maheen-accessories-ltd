@@ -15,21 +15,31 @@ export default function FeedbackForm({ initialData, onSubmit, onCancel }) {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    if (name.startsWith("cta.")) {
-      const ctaField = name.split(".")[1];
-      setFormData((prev) => ({
-        ...prev,
-        cta: {
-          ...prev.cta,
-          [ctaField]: value,
-        },
-      }));
-    } else {
-      setFormData((prev) => ({ ...prev, [name]: value }));
-    }
-    // Clear error for this field
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+
     if (errors[name]) {
-      setErrors((prev) => ({ ...prev, [name]: "" }));
+      setErrors((prev) => ({
+        ...prev,
+        [name]: "",
+      }));
+    }
+  };
+
+  const handleRatingChange = (rating) => {
+    setFormData((prev) => ({
+      ...prev,
+      rating,
+    }));
+
+    if (errors.rating) {
+      setErrors((prev) => ({
+        ...prev,
+        rating: "",
+      }));
     }
   };
 
@@ -183,7 +193,7 @@ export default function FeedbackForm({ initialData, onSubmit, onCancel }) {
       />
 
       {/* CTA Section */}
-      <div className="border-t border-gray-200 pt-4">
+      {/* <div className="border-t border-gray-200 pt-4">
         <h3 className="text-lg font-medium text-gray-900 mb-3">
           Call to Action (CTA)
         </h3>
@@ -225,7 +235,7 @@ export default function FeedbackForm({ initialData, onSubmit, onCancel }) {
             />
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* Form Actions */}
       <div className="flex justify-end gap-3 pt-4 border-t">

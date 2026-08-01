@@ -44,7 +44,7 @@ export default function FeedbackList({
             {!imageErrors[feedbackItem._id] ? (
               <Image
                 src={feedbackItem.image}
-                alt={feedbackItem.title}
+                alt={feedbackItem.name}
                 fill
                 className="object-cover"
                 onError={() => handleImageError(feedbackItem._id)}
