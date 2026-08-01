@@ -6,7 +6,11 @@ export async function GET() {
   await connectToDB();
   const blog = await BlogSection.find();
   const response = NextResponse.json(blog);
-  response.headers.set("Access-Control-Allow-Origin", "*");
+  // response.headers.set("Access-Control-Allow-Origin", "*");
+  response.headers.set(
+    "Access-Control-Allow-Origin",
+    "https://maheen-accessories-ltd-public.vercel.app/",
+  );
   return response;
 }
 

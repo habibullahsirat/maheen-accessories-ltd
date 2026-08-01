@@ -6,7 +6,11 @@ export async function GET() {
   await connectToDB();
   const policy = await PolicySection.find();
   const response = NextResponse.json(policy);
-  response.headers.set("Access-Control-Allow-Origin", "*");
+  // response.headers.set("Access-Control-Allow-Origin", "*");
+  response.headers.set(
+    "Access-Control-Allow-Origin",
+    "https://maheen-accessories-ltd-public.vercel.app/",
+  );
   return response;
 }
 
