@@ -126,7 +126,7 @@ function HamburgerMenu({ open, onClose }) {
 
         {/* Logo */}
         <div className="flex items-center gap-3 px-6 mt-5">
-          <svg
+          {/* <svg
             width="40"
             height="40"
             viewBox="0 0 48 48"
@@ -145,7 +145,8 @@ function HamburgerMenu({ open, onClose }) {
             <p className="font-semibold tracking-wide text-[15px]">
               ACCESSORIES
             </p>
-          </div>
+          </div> */}
+          <img src="/Logo.png" alt="Maheen Accessories Logo" />
         </div>
 
         {/* Menu section */}
