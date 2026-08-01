@@ -2,14 +2,19 @@
 import Image from "next/image";
 import { useState } from "react";
 
-export default function HeroList({ hero, onEdit, onDelete, isDeleting }) {
+export default function FeedbackList({
+  feedback,
+  onEdit,
+  onDelete,
+  isDeleting,
+}) {
   const [imageErrors, setImageErrors] = useState({});
 
-  const handleImageError = (heroId) => {
-    setImageErrors((prev) => ({ ...prev, [heroId]: true }));
+  const handleImageError = (feedbackId) => {
+    setImageErrors((prev) => ({ ...prev, [feedbackId]: true }));
   };
 
-  if (!hero) {
+  if (!feedback) {
     return (
       <div className="flex justify-center items-center h-64">
         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
@@ -17,11 +22,11 @@ export default function HeroList({ hero, onEdit, onDelete, isDeleting }) {
     );
   }
 
-  if (hero.length === 0) {
+  if (feedback.length === 0) {
     return (
       <div className="text-center py-12 bg-gray-50 rounded-lg">
         <p className="text-gray-500 text-lg">
-          No heroes found. Add your first hero!
+          No feedback found. Add your first feedback!
         </p>
       </div>
     );
@@ -29,20 +34,20 @@ export default function HeroList({ hero, onEdit, onDelete, isDeleting }) {
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {hero.map((hero) => (
+      {feedback.map((feedbackItem) => (
         <div
-          key={hero._id}
+          key={feedbackItem._id}
           className="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 hover:shadow-lg transition-shadow"
         >
           {/* Image Section */}
           <div className="relative h-48 w-full bg-gray-100">
-            {!imageErrors[hero._id] ? (
+            {!imageErrors[feedbackItem._id] ? (
               <Image
-                src={hero.image}
-                alt={hero.title}
+                src={feedbackItem.image}
+                alt={feedbackItem.title}
                 fill
                 className="object-cover"
-                onError={() => handleImageError(hero._id)}
+                onError={() => handleImageError(feedbackItem._id)}
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               />
             ) : (
@@ -65,7 +70,7 @@ export default function HeroList({ hero, onEdit, onDelete, isDeleting }) {
             )}
 
             {/* Cloudinary Badge (optional) */}
-            {hero.image?.includes("cloudinary") && (
+            {feedbackItem.image?.includes("cloudinary") && (
               <div className="absolute top-2 right-2 bg-blue-500 text-white text-xs px-2 py-1 rounded-full">
                 Cloudinary
               </div>
@@ -75,46 +80,47 @@ export default function HeroList({ hero, onEdit, onDelete, isDeleting }) {
           {/* Content Section */}
           <div className="p-4">
             <h3 className="text-xl font-semibold text-gray-900 mb-2 line-clamp-1">
-              {hero.title}
+              {feedbackItem.name}
             </h3>
             <p className="text-gray-600 mb-4 line-clamp-2">
-              {hero.description}
+              {feedbackItem.review}
             </p>
 
             {/* CTA Display */}
-            {hero.cta && (hero.cta.text || hero.cta.href) && (
-              <div className="mb-4 p-3 bg-gray-50 rounded-lg border border-gray-100">
-                <p className="text-xs text-gray-500 mb-1">Call to Action:</p>
-                <div className="flex items-center gap-2 text-sm">
-                  {hero.cta.text && (
-                    <span className="font-medium text-blue-600">
-                      {hero.cta.text}
-                    </span>
-                  )}
-                  {hero.cta.href && (
-                    <>
-                      <span className="text-gray-400">→</span>
-                      <span className="text-gray-600 font-mono text-xs">
-                        {hero.cta.href}
+            {/* {feedbackItem.cta &&
+              (feedbackItem.cta.text || feedbackItem.cta.href) && (
+                <div className="mb-4 p-3 bg-gray-50 rounded-lg border border-gray-100">
+                  <p className="text-xs text-gray-500 mb-1">Call to Action:</p>
+                  <div className="flex items-center gap-2 text-sm">
+                    {feedbackItem.cta.text && (
+                      <span className="font-medium text-blue-600">
+                        {feedbackItem.cta.text}
                       </span>
-                    </>
-                  )}
+                    )}
+                    {feedbackItem.cta.href && (
+                      <>
+                        <span className="text-gray-400">→</span>
+                        <span className="text-gray-600 font-mono text-xs">
+                          {feedbackItem.cta.href}
+                        </span>
+                      </>
+                    )}
+                  </div>
                 </div>
-              </div>
-            )}
+              )} */}
 
             {/* Metadata */}
             <div className="flex items-center justify-between text-xs text-gray-400 mb-4">
-              <span>ID: {hero._id.slice(-6)}</span>
+              <span>ID: {feedbackItem._id.slice(-6)}</span>
               <span>
-                Updated: {new Date(hero.updatedAt).toLocaleDateString()}
+                Updated: {new Date(feedbackItem.updatedAt).toLocaleDateString()}
               </span>
             </div>
 
             {/* Action Buttons */}
             <div className="flex justify-end gap-2 mt-4 pt-3 border-t border-gray-100">
               <button
-                onClick={() => onEdit(hero)}
+                onClick={() => onEdit(feedbackItem)}
                 className="px-3 py-1.5 bg-yellow-500 text-white rounded-md hover:bg-yellow-600 transition-colors flex items-center gap-1 text-sm"
               >
                 <svg
@@ -133,7 +139,7 @@ export default function HeroList({ hero, onEdit, onDelete, isDeleting }) {
                 Edit
               </button>
               <button
-                onClick={() => onDelete(hero._id)}
+                onClick={() => onDelete(feedbackItem._id)}
                 disabled={isDeleting}
                 className="px-3 py-1.5 bg-red-500 text-white rounded-md hover:bg-red-600 transition-colors flex items-center gap-1 text-sm disabled:opacity-50 disabled:cursor-not-allowed"
               >
