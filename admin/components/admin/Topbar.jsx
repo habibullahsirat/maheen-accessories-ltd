@@ -7,12 +7,17 @@ import { Menu, Bell, ChevronDown, User, Settings, LogOut } from "lucide-react";
 const PAGE_TITLES = {
   "/admin": "Dashboard",
   "/admin/analytics": "Analytics",
-  "/admin/products": "Products",
-  "/admin/orders": "Orders",
-  "/admin/customers": "Customers",
-  "/admin/content": "Content",
-  "/admin/team": "Team",
-  "/admin/settings": "Settings",
+  "/admin/hero": "Hero",
+  "/admin/service": "Services",
+  "/admin/album": "Album",
+  "/admin/about": "About",
+  "/admin/feature": "Features",
+  "/admin/policy": "Policies",
+  "/admin/member": "Members",
+  "/admin/portfolio": "Portfolio",
+  "/admin/feedback": "Feedback",
+  "/admin/partner": "Partners",
+  "/admin/blog": "Blogs",
 };
 
 export default function Topbar({ setMobileOpen }) {

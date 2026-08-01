@@ -40,13 +40,14 @@ const NAV_GROUPS = [
       { name: "Blogs", href: "/admin/blog", icon: FileText },
     ],
   },
-  {
-    label: "System",
-    items: [
-      { name: "Team", href: "/admin/team", icon: UserCog },
-      { name: "Settings", href: "/admin/settings", icon: Settings },
-    ],
-  },
+  //   {
+  //     label: "System",
+  //     items: [
+  //       //   { name: "Team", href: "/admin/team", icon: UserCog },
+  //       //   { name: "Settings", href: "/admin/settings", icon: Settings },
+  //       { name: "Logout", href: "/", icon: Settings },
+  //     ],
+  //   },
 ];
 
 const DISPLAY_FONT =
