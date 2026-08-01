@@ -9,7 +9,7 @@ export async function GET() {
   // response.headers.set("Access-Control-Allow-Origin", "*");
   response.headers.set(
     "Access-Control-Allow-Origin",
-    "https://maheen-accessories-ltd-public.vercel.app/",
+    "https://maheen-accessories-ltd-public.vercel.app",
   );
   return response;
 }
