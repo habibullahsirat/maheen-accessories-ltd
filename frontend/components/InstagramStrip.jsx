@@ -175,17 +175,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 
-const Icon = ({
-  children,
-  size = 20,
-  className = "",
-  strokeWidth = 1.8,
-}: {
-  children: React.ReactNode;
-  size?: number;
-  className?: string;
-  strokeWidth?: number;
-}) => (
+const Icon = ({ children, size = 20, className = "", strokeWidth = 1.8 }) => (
   <svg
     width={size}
     height={size}
@@ -201,7 +191,7 @@ const Icon = ({
   </svg>
 );
 
-const Instagram = (props: any) => (
+const Instagram = (props) => (
   <Icon {...props}>
     <rect x="2" y="2" width="20" height="20" rx="5" />
     <circle cx="12" cy="12" r="4" />
@@ -209,20 +199,14 @@ const Instagram = (props: any) => (
   </Icon>
 );
 
-interface InstagramItem {
-  _id: string;
-  title: string;
-  image: string;
-}
-
 export default function InstagramStrip() {
-  const [images, setImages] = useState<InstagramItem[]>([]);
+  const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchInstagramImages = async () => {
       try {
-        const res = await fetch("/api/instagram-strip", {
+        const res = await fetch("http://localhost:3000/api/instagram-strip", {
           cache: "no-store",
         });
 
@@ -230,7 +214,7 @@ export default function InstagramStrip() {
           throw new Error("Failed to fetch Instagram images");
         }
 
-        const data: InstagramItem[] = await res.json();
+        const data = await res.json();
 
         // Maximum 5 images
         setImages(data.slice(0, 5));
@@ -249,10 +233,7 @@ export default function InstagramStrip() {
       <section className="w-full">
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5">
           {[...Array(5)].map((_, i) => (
-            <div
-              key={i}
-              className="aspect-square animate-pulse bg-gray-200"
-            />
+            <div key={i} className="aspect-square animate-pulse bg-gray-200" />
           ))}
         </div>
       </section>
@@ -268,12 +249,12 @@ export default function InstagramStrip() {
           images.length === 1
             ? "grid-cols-1"
             : images.length === 2
-            ? "grid-cols-2"
-            : images.length === 3
-            ? "grid-cols-3"
-            : images.length === 4
-            ? "grid-cols-2 md:grid-cols-4"
-            : "grid-cols-2 sm:grid-cols-3 lg:grid-cols-5"
+              ? "grid-cols-2"
+              : images.length === 3
+                ? "grid-cols-3"
+                : images.length === 4
+                  ? "grid-cols-2 md:grid-cols-4"
+                  : "grid-cols-2 sm:grid-cols-3 lg:grid-cols-5"
         }`}
       >
         {images.map((item) => (
