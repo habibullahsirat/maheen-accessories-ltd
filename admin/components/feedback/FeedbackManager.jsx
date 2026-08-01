@@ -35,12 +35,12 @@ export default function FeedbackManager() {
         },
       );
 
-      if (!response.ok) throw new Error("Failed to delete");
+      if (!response.ok) throw new Error("Failed to delete feedback");
 
-      toast.success("Hero deleted successfully!");
+      toast.success("Feedback deleted successfully!");
       mutate(); // Refresh the data
     } catch (error) {
-      toast.error("Failed to delete hero");
+      toast.error("Failed to delete feedback");
       console.error("Delete error:", error);
     } finally {
       setIsDeleting(false);
@@ -50,11 +50,11 @@ export default function FeedbackManager() {
   const handleSubmit = async (formData) => {
     setIsSubmitting(true);
     try {
-      const url = editingHero
-        ? `${process.env.NEXT_PUBLIC_API_URL}/api/hero/${editingHero._id}`
-        : `${process.env.NEXT_PUBLIC_API_URL}/api/hero`;
+      const url = editingFeedback
+        ? `${process.env.NEXT_PUBLIC_API_URL}/api/feedback/${editingFeedback._id}`
+        : `${process.env.NEXT_PUBLIC_API_URL}/api/feedback`;
 
-      const method = editingHero ? "PATCH" : "POST";
+      const method = editingFeedback ? "PATCH" : "POST";
 
       const response = await fetch(url, {
         method,
@@ -70,12 +70,14 @@ export default function FeedbackManager() {
       }
 
       toast.success(
-        editingHero ? "Hero updated successfully!" : "Hero added successfully!",
+        editingFeedback
+          ? "Feedback updated successfully!"
+          : "Feedback added successfully!",
       );
       mutate(); // Refresh the data
       setIsModalOpen(false);
     } catch (error) {
-      toast.error(error.message || "Failed to save hero");
+      toast.error(error.message || "Failed to save feedback");
       console.error("Save error:", error);
     } finally {
       setIsSubmitting(false);
@@ -87,7 +89,7 @@ export default function FeedbackManager() {
       <div className="flex justify-center items-center min-h-screen">
         <div className="text-center">
           <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading heroes...</p>
+          <p className="text-gray-600">Loading feedback...</p>
         </div>
       </div>
     );
@@ -98,10 +100,12 @@ export default function FeedbackManager() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Hero Management</h1>
+          <h1 className="text-3xl font-bold text-gray-900">
+            Feedback Management
+          </h1>
           <p className="text-gray-600 mt-1">
-            Total Heroes:{" "}
-            <span className="font-semibold">{hero?.length || 0}</span>
+            Total Feedback:{" "}
+            <span className="font-semibold">{feedback?.length || 0}</span>
           </p>
         </div>
 
@@ -122,13 +126,13 @@ export default function FeedbackManager() {
               d="M12 4v16m8-8H4"
             />
           </svg>
-          Add New Hero
+          Add New Feedback
         </button>
       </div>
 
-      {/* Hero List */}
-      <HeroList
-        hero={hero}
+      {/* Feedback List */}
+      <FeedbackList
+        feedback={feedback}
         onEdit={handleEdit}
         onDelete={handleDelete}
         isDeleting={isDeleting}
@@ -138,10 +142,10 @@ export default function FeedbackManager() {
       <Modal
         isOpen={isModalOpen}
         onClose={() => !isSubmitting && setIsModalOpen(false)}
-        title={editingHero ? "Edit Hero" : "Add New Hero"}
+        title={editingFeedback ? "Edit Feedback" : "Add New Feedback"}
       >
-        <HeroForm
-          initialData={editingHero}
+        <FeedbackForm
+          initialData={editingFeedback}
           onSubmit={handleSubmit}
           onCancel={() => !isSubmitting && setIsModalOpen(false)}
         />
