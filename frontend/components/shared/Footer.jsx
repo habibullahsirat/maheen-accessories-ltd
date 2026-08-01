@@ -212,11 +212,7 @@ export default function Footer() {
               <span className="font-hero text-xs sm:text-sm uppercase tracking-[3px]">
                 Maheen Accessories Ltd.
               </span> */}
-              <img
-                src="/Logo.png"
-                alt="Maheen Accessories Logo"
-                className="h-9 w-9"
-              />
+              <img src="/Logo.png" alt="Maheen Accessories Logo" />
             </div>
 
             <p className="font-sora text-base sm:text-lg uppercase tracking-[2px] text-[#DDDDDD]">
