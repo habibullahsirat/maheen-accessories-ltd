@@ -300,7 +300,7 @@ export default function Navbar() {
             <span className="font-hero font-semibold tracking-widest text-xs sm:text-sm uppercase truncate">
               Maheen Accessories
             </span> */}
-            <img src="/logo.png" alt="Maheen Accessories Logo" />
+            <img src="/Logo.png" alt="Maheen Accessories Logo" />
           </div>
           <span className="hidden lg:block w-px h-5 bg-black/20" />
           <div className="hidden lg:flex items-center gap-2 text-[#5F5E5D] text-[11px]">
