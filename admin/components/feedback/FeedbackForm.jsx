@@ -192,51 +192,6 @@ export default function FeedbackForm({ initialData, onSubmit, onCancel }) {
         error={errors.image}
       />
 
-      {/* CTA Section */}
-      {/* <div className="border-t border-gray-200 pt-4">
-        <h3 className="text-lg font-medium text-gray-900 mb-3">
-          Call to Action (CTA)
-        </h3>
-
-        <div className="space-y-4">
-          <div>
-            <label
-              htmlFor="cta.text"
-              className="block text-sm font-medium text-gray-700 mb-1"
-            >
-              CTA Text
-            </label>
-            <input
-              type="text"
-              id="cta.text"
-              name="cta.text"
-              value={formData.cta.text}
-              onChange={handleChange}
-              placeholder="e.g., View Factory"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
-
-          <div>
-            <label
-              htmlFor="cta.href"
-              className="block text-sm font-medium text-gray-700 mb-1"
-            >
-              CTA Link
-            </label>
-            <input
-              type="text"
-              id="cta.href"
-              name="cta.href"
-              value={formData.cta.href}
-              onChange={handleChange}
-              placeholder="e.g., /factory-machinery"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
-        </div>
-      </div> */}
-
       {/* Form Actions */}
       <div className="flex justify-end gap-3 pt-4 border-t">
         <button

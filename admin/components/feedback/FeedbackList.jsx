@@ -86,29 +86,6 @@ export default function FeedbackList({
               {feedbackItem.review}
             </p>
 
-            {/* CTA Display */}
-            {/* {feedbackItem.cta &&
-              (feedbackItem.cta.text || feedbackItem.cta.href) && (
-                <div className="mb-4 p-3 bg-gray-50 rounded-lg border border-gray-100">
-                  <p className="text-xs text-gray-500 mb-1">Call to Action:</p>
-                  <div className="flex items-center gap-2 text-sm">
-                    {feedbackItem.cta.text && (
-                      <span className="font-medium text-blue-600">
-                        {feedbackItem.cta.text}
-                      </span>
-                    )}
-                    {feedbackItem.cta.href && (
-                      <>
-                        <span className="text-gray-400">→</span>
-                        <span className="text-gray-600 font-mono text-xs">
-                          {feedbackItem.cta.href}
-                        </span>
-                      </>
-                    )}
-                  </div>
-                </div>
-              )} */}
-
             {/* Metadata */}
             <div className="flex items-center justify-between text-xs text-gray-400 mb-4">
               <span>ID: {feedbackItem._id.slice(-6)}</span>
