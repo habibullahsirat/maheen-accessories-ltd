@@ -38,6 +38,11 @@ const NAV_GROUPS = [
       { name: "Feedback", href: "/admin/feedback", icon: FileText },
       { name: "Partners", href: "/admin/partner", icon: FileText },
       { name: "Blogs", href: "/admin/blog", icon: FileText },
+      {
+        name: "Instagram Strip",
+        href: "/admin/instagram-strip",
+        icon: FileText,
+      },
     ],
   },
   //   {
