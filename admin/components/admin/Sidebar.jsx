@@ -17,13 +17,13 @@ import {
 } from "lucide-react";
 
 const NAV_GROUPS = [
-  //   {
-  //     label: "Main",
-  //     items: [
-  //       { name: "Dashboard", href: "/admin", icon: LayoutDashboard },
-  //       { name: "Analytics", href: "/admin/analytics", icon: BarChart3 },
-  //     ],
-  //   },
+  {
+    label: "Main",
+    items: [
+      { name: "Dashboard", href: "/admin", icon: LayoutDashboard },
+      // { name: "Analytics", href: "/admin/analytics", icon: BarChart3 },
+    ],
+  },
   {
     label: "Section Management",
     items: [
