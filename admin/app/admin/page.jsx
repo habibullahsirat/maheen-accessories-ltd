@@ -94,7 +94,7 @@ import {
 const DISPLAY_FONT =
   "var(--font-display), 'Space Grotesk', system-ui, sans-serif";
 
-const API_BASE = "http://localhost:3000/api";
+const API_BASE = "https://maheen-accessories-ltd-admin.vercel.app/api";
 
 export default function AdminDashboardPage() {
   const [email, setEmail] = useState("");
