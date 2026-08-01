@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin":
-    "https://maheen-accessories-ltd-public.vercel.app",
+    "https://maheen-accessories-ltd-public-pp0ym222b.vercel.app",
   "Access-Control-Allow-Methods": "GET, POST, PATCH, DELETE, OPTIONS",
   "Access-Control-Allow-Headers": "Content-Type, Authorization",
 };
