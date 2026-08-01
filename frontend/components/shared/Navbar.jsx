@@ -197,11 +197,13 @@ function HamburgerMenu({ open, onClose }) {
 
           <div className="mt-4 space-y-4">
             <a
-              href="mailto:kimocare@gmail.com"
+              href="mailto:habibullah.sirat.001@gmail.com"
               className="flex items-center gap-3 text-white/85 hover:text-white transition-colors"
             >
               <Mail size={17} strokeWidth={1.75} className="text-white/60" />
-              <span className="text-[13px]">kimocare@gmail.com</span>
+              <span className="text-[13px]">
+                habibullah.sirat.001@gmail.com
+              </span>
             </a>
 
             <div className="flex items-center gap-3 text-white/85">
@@ -292,12 +294,13 @@ export default function Navbar() {
       <div className="max-w-[1900px] mx-auto flex items-center justify-between gap-4 sm:gap-6 lg:gap-10 px-4 sm:px-6 py-4 sm:py-5">
         <div className="flex items-center gap-3 sm:gap-5 min-w-0">
           <div className="flex items-center gap-2 shrink-0">
-            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-gradient-to-b from-[#8B68CE] to-[#9AD2ED] flex items-center justify-center text-white font-bold text-xs">
+            {/* <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-gradient-to-b from-[#8B68CE] to-[#9AD2ED] flex items-center justify-center text-white font-bold text-xs">
               MA
             </div>
             <span className="font-hero font-semibold tracking-widest text-xs sm:text-sm uppercase truncate">
               Maheen Accessories
-            </span>
+            </span> */}
+            <img src="/logo.png" alt="Maheen Accessories Logo" />
           </div>
           <span className="hidden lg:block w-px h-5 bg-black/20" />
           <div className="hidden lg:flex items-center gap-2 text-[#5F5E5D] text-[11px]">
