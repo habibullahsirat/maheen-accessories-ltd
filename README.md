@@ -31,8 +31,9 @@ If you need a tailored README (framework-specific setup, CI, environment variabl
 
 - JavaScript (majority of code)
 - TypeScript (selected modules / types)
-- CSS for styling
-- Common tools / frameworks (adjust as appropriate): React, Vite, or Next.js (replace with the framework actually used in the repo)
+- TailwindCSS for styling
+- Frameworks (adjust as appropriate): Next.js
+- REST API
 
 ---
 
