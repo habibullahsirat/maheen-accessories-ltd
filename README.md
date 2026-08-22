@@ -47,8 +47,8 @@ This repository contains the frontend for Maheen Accessories Ltd — the codebas
 
 ### Prerequisites
 
-- Node.js LTS (>=16 recommended)
-- npm (>=8) or yarn / pnpm
+- Node.js
+- npm 
 - Git
 
 ### Install
