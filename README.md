@@ -66,7 +66,6 @@ npm install
 Create a `.env` file at the project root (example keys below). Replace values with your backend/API or analytics endpoints:
 
 ```
-# Example environment variables
 MONGODB_URI=mongo_db_connection_string
 
 NEXT_PUBLIC_API_URL=your_api_url
