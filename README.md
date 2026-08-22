@@ -14,7 +14,6 @@ A web application for Maheen Accessories Ltd corporate site built using Next.js.
   - [Install](#install)
   - [Environment variables](#environment-variables)
   - [Scripts](#scripts)
-- [Deployment](#deployment)
 - [Contact / Maintainer](#contact--maintainer)
 
 ---
